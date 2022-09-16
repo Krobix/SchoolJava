@@ -24,14 +24,124 @@ public class Stretch {
 		return null;
 	}
 	
-	public static StretchShape createShape(int x, int y, char c) {
+	public static StretchShape createShape(int x, int y, char c, boolean f) {
 		ArrayList<StretchSquare> s = new ArrayList<StretchSquare>();
 		StretchShape shape = null;
+		boolean failed = f;
 		if(c=='a') {
 			s.add(getSquare(x, y));
 			s.add(getSquare(x+1, y));
 			s.add(getSquare(x+2, y));
-			
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) failed=true;
+			}
+			if(failed) {
+				s = new ArrayList<StretchSquare>();
+				s.add(getSquare(x, y));
+				s.add(getSquare(x-1, y));
+				s.add(getSquare(x-2, y));
+				failed = false;
+			}
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) return null;
+			}
+			s.get(0).toggleCircle();
+			s.get(2).toggleCircle();
 		}
+
+		else if(c=='b') {
+			s.add(getSquare(x, y));
+			s.add(getSquare(x, y+1));
+			s.add(getSquare(x, y+2));
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) failed = true;
+			}
+			if(failed) {
+				s = new ArrayList<StretchSquare>();
+				s.add(getSquare(x, y));
+				s.add(getSquare(x, y-1));
+				s.add(getSquare(x, y-2));
+				failed = false;
+			}
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) return null;
+			}
+			s.get(0).toggleCircle();
+			s.get(2).toggleCircle();
+		}
+		
+		else if(c=='c') {
+			s.add(getSquare(x, y));
+			s.add(getSquare(x, y+1));
+			s.add(getSquare(x+1, y+1));
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) failed = true;
+			}
+			if(failed) {
+				s = new ArrayList<StretchSquare>();
+				s.add(getSquare(x, y));
+				s.add(getSquare(x-1, y));
+				s.add(getSquare(x-1, y-1));
+				failed = false;
+			}
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) return null;
+			}
+			
+			s.get(0).toggleCircle();
+			s.get(2).toggleCircle();
+		}
+		
+		else if(c=='d') {
+			s.add(getSquare(x, y));
+			s.add(getSquare(x+1, y));
+			s.add(getSquare(x+1, y+1));
+			s.add(getSquare(x+1, y+2));
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) failed = true;
+			}
+			if(failed) {
+				s = new ArrayList<StretchSquare>();
+				s.add(getSquare(x, y));
+				s.add(getSquare(x, y-1));
+				s.add(getSquare(x, y-2));
+				s.add(getSquare(x-1, y-2));
+				failed=false;
+			}
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) return null;
+			}
+			
+	
+			s.get(0).toggleCircle();
+			s.get(3).toggleCircle();
+		}
+		
+		else if(c=='e') {
+			s.add(getSquare(x, y));
+			s.add(getSquare(x+1, y));
+			s.add(getSquare(x+1, y+1));
+			s.add(getSquare(x+2, y+1));
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) failed = true;
+			}
+			if(failed) {
+				s = new ArrayList<StretchSquare>();
+				s.add(getSquare(x, y));
+				s.add(getSquare(x-1, y-1));
+				s.add(getSquare(x-1, y));
+				s.add(getSquare(x-2, y-1));
+				failed=false;
+			}
+			for(StretchSquare t:s) {
+				if(t==null || t.getLetter()!='0' || t.getBlocked()) return null;
+			}
+	
+			s.get(0).toggleCircle();
+			s.get(3).toggleCircle();
+		}
+		
+		shape = new StretchShape(x, y, c, s);
+		return shape;
 	}
 }

@@ -12,6 +12,7 @@ public class StretchSquare {
 		letter = c;
 		blocked = b;
 		circle = c2;
+		if(blocked) letter = 'b';
 	}
 	
 	public int getX() {

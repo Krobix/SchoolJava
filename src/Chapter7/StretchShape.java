@@ -4,13 +4,18 @@ import java.util.*;
 public class StretchShape {
 	private ArrayList<StretchSquare> squares;
 	private char letter;
-	private int x, y;
+	private int x, y, squaresAmount;
 	
 	public StretchShape(int n1, int n2, char c, ArrayList<StretchSquare> s) {
+		squaresAmount = 0;
 		x = n1;
 		y = n2;
 		letter = c;
 		squares = s;
+		for(StretchSquare t:s) {
+			t.setLetter(c);
+			squaresAmount++;
+		}
 	}
 	
 	public StretchSquare getSquare(int n) {
@@ -25,7 +30,35 @@ public class StretchShape {
 		return y;
 	}
 	
+	public int len() {
+		return squaresAmount;
+	}
+	
 	public char getLetter() {
 		return letter;
+	}
+	
+	public boolean overlapX(StretchShape other) {
+		for(StretchSquare i:squares) {
+			for(int j=0; j<other.len(); j++) {
+				if(i.getX()==other.getSquare(j).getX()) return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean circlesTouching(StretchShape other) {
+		for(StretchSquare i:squares) {
+			for(int j=0; j<other.len(); j++) {
+				
+			}
+		}
+	}
+	
+	public void erase() {
+		for(StretchSquare s:squares) {
+			s.setLetter('0');
+			if(s.getCircle()) s.toggleCircle();
+		}
 	}
 }
