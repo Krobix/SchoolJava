@@ -50,9 +50,27 @@ public class StretchShape {
 	public boolean circlesTouching(StretchShape other) {
 		for(StretchSquare i:squares) {
 			for(int j=0; j<other.len(); j++) {
-				
+				int thisX=i.getX(), thisY=i.getY(), otherX=other.getSquare(j).getX(), otherY=other.getSquare(j).getY();
+				if((thisX==otherX+1 || thisX==otherX-1 || thisY==otherY+1 || thisY==otherY-1) && (i.getCircle() && other.getSquare(j).getCircle())) {
+					return true;
+				}
 			}
 		}
+		
+		return false;
+	}
+	
+	public int amountTouching(StretchShape other) {
+		int n=0;
+		for(StretchSquare i:squares) {
+			for(int j=0; j<other.len(); j++) {
+				int thisX=i.getX(), thisY=i.getY(), otherX=other.getSquare(j).getX(), otherY=other.getSquare(j).getY();
+				if(thisX==otherX+1 || thisX==otherX-1 || thisY==otherY+1 || thisY==otherY-1) {
+					n++;
+				}
+			}
+		}
+		return n;
 	}
 	
 	public void erase() {
