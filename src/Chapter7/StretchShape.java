@@ -75,7 +75,7 @@ public class StretchShape {
 	
 	public void erase() {
 		for(StretchSquare s:squares) {
-			s.setLetter('0');
+			s.setLetter(' ');
 			if(s.getCircle()) s.toggleCircle();
 		}
 	}

@@ -12,7 +12,7 @@ public class StretchSquare {
 		letter = c;
 		blocked = b;
 		circle = c2;
-		if(blocked) letter = 'b';
+		if(blocked) letter = '0';
 	}
 	
 	public int getX() {
@@ -45,5 +45,9 @@ public class StretchSquare {
 	
 	public void toggleCircle() {
 		circle = !circle;
+	}
+	
+	public int getID() {
+		return id;
 	}
 }
