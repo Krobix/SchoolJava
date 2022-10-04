@@ -57,6 +57,7 @@ public class Stretch {
 		for(StretchSquare s:board) {
 			
 		}
+		return null;
 	}
 	
 	public static StretchShape createShape(int x, int y, char c, boolean f) {
