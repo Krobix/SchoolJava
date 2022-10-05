@@ -4,7 +4,15 @@ public class Quiz1 {
 	static int f=10;
 	
 	static class Person{
-		static int pid=0;
+		public static int pid=0;
+		int age;
+		String name;
+		
+		Person(String s, int i){
+			pid++;
+			name=s;
+			age=i;
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -50,13 +58,52 @@ public class Quiz1 {
 		for(int f=0; f<5; f++) {}
 		System.out.println(f);
 		
-		//QUESTION 12
+		//QUESTION 11
+		Person p1 = new Person("John", 22);
+		Person p2 = change(p1);
+		System.out.println(p2.pid + " " + p2.name + " " + p2.age);
+		System.out.println(p1.pid + " " + p1.name + " " + p1.age);
 		
+		//QUESTION 12
+		int f=10;
+		int g = change(f);
+		System.out.println(f+g);
+		
+		//QUESTION 13
+		String s = "Java";
+		s.concat(" SE 6");
+		s.replace('6', '7');
+		System.out.println(s);
+		
+		//QUESTION 14
+		String t = "Java";
+		t.concat(" SE 6");
+		t.toLowerCase();
+		System.out.println(t);
+		
+		//QUESTION 15
+		//I started writing this code but then realized there was no point as it would always error out
+		//Because they would try to use a variable not in the current slope
 		
 	}
 	
 	static void print() {
 		int f = 8;
 		System.out.println(f);
+	}
+	
+	static public void print2(int a) {
+		
+	}
+	
+	private static Person change(Object o) {
+		Person p2 = (Person) o;
+		p2.age = 25;
+		return p2;
+	}
+	
+	static int change(int x) {
+		x=12;
+		return 12;
 	}
 }
